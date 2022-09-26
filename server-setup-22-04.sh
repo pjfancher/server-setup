@@ -56,14 +56,13 @@ REMOVE_TOOLS=(
 	'mysql'
 )
 
-# Install Tools
+# Update, Upgrade, Auto Remove
 sudo apt update && sudo apt upgrade -y && sudo apt autoremove
-for TOOL in "${TOOLS[@]}"; do
-	sudo apt install ${TOOL} -y global
-done
+
+# Install Tools
+sudo apt install ${TOOLS[@]} -y global
 
 # Remove some tools that may be pre-installed
-#*****************************************************************************
 for TOOL in "${REMOVE_TOOLS[@]}"; do
 	sudo systemctl mask ${TOOL}.service
 done
