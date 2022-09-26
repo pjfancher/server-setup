@@ -7,7 +7,7 @@
 # Users, Groups, Versions, Dirs
 #*****************************************************************************
 USERS=('dev' 'pj')
-GROUPS=('sudo' 'www-data' 'docker' 'dev')
+USERGROUPS=('sudo' 'www-data' 'docker' 'dev')
 NVM_DIR="$HOME/.nvm"
 
 # Set Env Vars
@@ -130,7 +130,7 @@ for USER in "${USERS[@]}"; do
 	sudo adduser $USER
 
 	# Add users to groups
-	for GROUP in "${GROUPS[@]}"; do
+	for GROUP in "${USERGROUPS[@]}"; do
 		sudo usermod -aG $GROUP $USER
 	done
 
