@@ -10,5 +10,5 @@ https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubunt
 - <sub>provide password for users (pj, dev)</sub>
 - <sub>logout/login as pj</sub>
 - `curl -L peej.io | bash`
-- <sub>Run node-install.sh per user as neccessary.</sub>
-- `git clone https://github.com/pjfancher/server-setup && cd server-setup && ./node-install.sh`
+- <sub>Run node-install.sh docker-compose-install.sh per user as neccessary.</sub>
+- `git clone https://github.com/pjfancher/server-setup && cd server-setup/install/ && ./node-install.sh && ./docker-compose-install.sh`
