@@ -4,7 +4,7 @@
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
 
-# USERS
+# Users, Groups, Versions, Dirs
 #*****************************************************************************
 USERS=('pj', 'dev')
 GROUPS=('sudo' 'www-data' 'docker', 'dev')
@@ -51,7 +51,7 @@ REMOVE_TOOLS=(
 )
 
 # Install Tools
-sudo apt update
+sudo apt update && sudo upgrade -y
 for TOOL in "${TOOLS[@]}"; do
 	printf "sudo apt install ${TOOL} -y\n"
 done
@@ -117,7 +117,7 @@ sudo ufw status
 
 #*****************************************************************************
 #*****************************************************************************
-# Add Users and assign Groups
+# Add Users, assign Groups, enbale access
 #*****************************************************************************
 for USER in "${USERS[@]}"; do
 	sudo useradd -m $USER
