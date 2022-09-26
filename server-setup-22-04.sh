@@ -8,10 +8,10 @@
 #*****************************************************************************
 USERS=('dev', 'pj')
 GROUPS=('sudo' 'www-data' 'docker', 'dev')
-NVM_VERSION=0.39.1
-NODE_VERSION=14.20.0
 
 # Set Env Vars
+export NVM_VERSION=0.39.1
+export NODE_VERSION=14.20.0
 export NVM_DIR="$HOME/.nvm"
 export NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
 export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
@@ -75,7 +75,7 @@ done
 #*****************************************************************************
 sudo mkdir $NVM_DIR
 sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash
-sudo $NVM_DIR/nvm.sh \
+sudo $NVM_DIR/nvm-exec \
 	&& nvm install $NODE_VERSION \
 	&& nvm alias default $NODE_VERSION \
 	&& nvm use default
