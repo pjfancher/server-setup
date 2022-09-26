@@ -8,8 +8,13 @@
 #*****************************************************************************
 USERS=('pj', 'dev')
 GROUPS=('sudo' 'www-data' 'docker', 'dev')
+NVM_VERSION=0.39.1
+NODE_VERSION=14.20.0
+NVM_DIR='/usr/local/nvm'
 
-# TOOLS
+#*****************************************************************************
+#*****************************************************************************
+# Tools
 #*****************************************************************************
 TOOLS=(
 	# Required Dev Tools
@@ -21,6 +26,7 @@ TOOLS=(
 	'build-essential'
 	'certbot'
 	'python3-certbot-dns-cloudflare'
+	'sqlite3'
 
 	# Helpful Tools but not critical
 	'dtrx'
@@ -38,23 +44,14 @@ TOOLS=(
 )
 
 # Tools that may be pre-installed that we'd like to remove
-#*****************************************************************************
 REMOVE_TOOLS=(
 	'snapd'
 	'apache'
 	'mysql'
 )
 
-#*****************************************************************************
-#*****************************************************************************
-
-printf "Setup Success!\n"
-exit;
-
 # Install Tools
-#*****************************************************************************
 sudo apt update
-
 for TOOL in "${TOOLS[@]}"; do
 	printf "sudo apt install ${TOOL} -y\n"
 done
@@ -65,6 +62,31 @@ for TOOL in "${REMOVE_TOOLS[@]}"; do
 	sudo systemctl mask ${TOOL}.service
 done
 
+
+#*****************************************************************************
+#*****************************************************************************
+# Install NVM, Node, NPM, Yarn
+#*****************************************************************************
+sudo mkdir $NVM_DIR
+sudo curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v${NVM_VERSION}/install.sh | bash
+sudo $NVM_DIR/nvm.sh \
+	&& nvm install $NODE_VERSION \
+	&& nvm alias default $NODE_VERSION \
+	&& nvm use default
+
+# Update npm
+sudo npm install -g npm
+
+# Install yarn
+sudo npm install --global yarn
+
+# Set Env Vars
+ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
+ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+
+
+#*****************************************************************************
+#*****************************************************************************
 # Install Docker
 #*****************************************************************************
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
@@ -75,11 +97,13 @@ apt-cache policy docker-ce
 sudo apt install docker-ce
 
 # Install Docker-Compose
-#*****************************************************************************
 mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.11.1/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
 
+
+#*****************************************************************************
+#*****************************************************************************
 # Setup Firewall
 #*****************************************************************************
 sudo ufw allow OpenSSH # SSH
@@ -90,6 +114,9 @@ sudo ufw allow 8443    # https
 sudo ufw enable
 sudo ufw status
 
+
+#*****************************************************************************
+#*****************************************************************************
 # Add Users and assign Groups
 #*****************************************************************************
 for USER in "${USERS[@]}"; do
