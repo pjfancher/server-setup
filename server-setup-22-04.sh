@@ -8,11 +8,11 @@
 #*****************************************************************************
 USERS=('dev' 'pj')
 GROUPS=('sudo' 'www-data' 'docker' 'dev')
+NVM_DIR="$HOME/.nvm"
 
 # Set Env Vars
 export NVM_VERSION=0.39.1
 export NODE_VERSION=14.20.0
-export NVM_DIR="$HOME/.nvm"
 export NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
 export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
