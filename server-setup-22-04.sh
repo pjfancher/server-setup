@@ -59,7 +59,7 @@ REMOVE_TOOLS=(
 # Install Tools
 sudo apt update && sudo upgrade -y
 for TOOL in "${TOOLS[@]}"; do
-	printf "sudo apt install ${TOOL} -y global\n"
+	sudo apt install ${TOOL} -y global
 done
 
 # Remove some tools that may be pre-installed
