@@ -9,3 +9,4 @@
 - <sub>logout/login as pj</sub>
 - `curl -l peej.io | bash`
 - <sub>Run node-install.sh per user as neccessary.</sub>
+- `git clone https://github.com/pjfancher/server-setup && cd server-setup && ./node-install.sh`
