@@ -81,8 +81,8 @@ sudo npm install -g npm
 sudo npm install --global yarn
 
 # Set Env Vars
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
+export NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
+export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
 
 #*****************************************************************************
