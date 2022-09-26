@@ -6,7 +6,7 @@
 
 # Users, Groups, Versions, Dirs
 #*****************************************************************************
-USERS=('pj', 'dev')
+USERS=('dev', 'pj')
 GROUPS=('sudo' 'www-data' 'docker', 'dev')
 NVM_VERSION=0.39.1
 NODE_VERSION=14.20.0
@@ -117,7 +117,7 @@ sudo ufw status
 
 #*****************************************************************************
 #*****************************************************************************
-# Add Users, assign Groups, enbale access
+# Add Users, assign Groups, enable access
 #*****************************************************************************
 for USER in "${USERS[@]}"; do
 	sudo useradd -m $USER
