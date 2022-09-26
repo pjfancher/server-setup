@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 ##################################################################################################################
 #
 #	Do This First:
@@ -21,6 +20,7 @@ TOOLS=(
 	'mosh'
 	'curl'
 	'vim'
+	'ufw'
 	'build-essential'
 	'certbot'
 	'python3-certbot-dns-cloudflare'
@@ -83,6 +83,15 @@ mkdir -p ~/.docker/cli-plugins/
 curl -SL https://github.com/docker/compose/releases/download/v2.11.1/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
 
+# Setup Firewall
+#*****************************************************************************
+sudo ufw allow OpenSSH # SSH
+sudo ufw allow 1337    # Backend
+sudo ufw allow 2096    # Frontend
+sudo ufw allow 80      # http
+sudo ufw allow 8443    # https
+sudo ufw enable
+sudo ufw status
 
 # Add Users and assign Groups
 #*****************************************************************************
@@ -91,6 +100,9 @@ for USER in "${USERS[@]}"; do
 
 	# Add users to groups
 	for GROUP in "${GROUPS[@]}"; do
-		sudo usermod -a -G $GROUP $USER
+		sudo usermod -aG $GROUP $USER
 	done
+
+	# Enable External Access for Users
+	sudo rsync --archive --chown=${USER}:${USER} /root/.ssh /home/${USER}
 done
