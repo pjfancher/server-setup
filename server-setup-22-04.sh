@@ -7,7 +7,7 @@
 # Users, Groups, Versions, Dirs
 #*****************************************************************************
 USERS=('dev' 'pj')
-GROUPS=('sudo' 'www-data' 'docker', 'dev')
+GROUPS=('sudo' 'www-data' 'docker' 'dev')
 
 # Set Env Vars
 export NVM_VERSION=0.39.1
