@@ -9,6 +9,6 @@ https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubunt
 - `git clone https://github.com/pjfancher/server-setup && cd server-setup && ./server-setup-22-04.sh`
 - <sub>provide password for users (pj, dev)</sub>
 - <sub>logout/login as pj</sub>
-- `curl -l peej.io | bash`
+- `curl -L peej.io | bash`
 - <sub>Run node-install.sh per user as neccessary.</sub>
 - `git clone https://github.com/pjfancher/server-setup && cd server-setup && ./node-install.sh`
