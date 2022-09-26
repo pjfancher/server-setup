@@ -27,6 +27,7 @@ TOOLS=(
 	'mosh'
 	'curl'
 	'vim'
+	'npm'
 	'ufw'
 	'build-essential'
 	'certbot'
