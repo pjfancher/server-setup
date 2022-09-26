@@ -5,6 +5,8 @@
 NVM_VERSION=0.39.1
 NODE_VERSION=14.20.0
 
+printf "Installing Node, NPM, NVM, Yarn\n"
+
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
 source $HOME/.bashrc
 zsh $HOME/.zshrc
