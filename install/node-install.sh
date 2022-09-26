@@ -6,8 +6,9 @@ NVM_VERSION=0.39.1
 NODE_VERSION=14.20.0
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
-source ~/.bashrc
-source ~/.zshrc
+source $HOME/.bashrc
+zsh $HOME/.zshrc
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
