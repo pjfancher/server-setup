@@ -57,7 +57,7 @@ REMOVE_TOOLS=(
 )
 
 # Install Tools
-sudo apt update && sudo upgrade -y
+sudo apt update && sudo apt upgrade -y
 for TOOL in "${TOOLS[@]}"; do
 	sudo apt install ${TOOL} -y global
 done
