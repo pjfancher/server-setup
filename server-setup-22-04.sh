@@ -6,7 +6,7 @@
 
 # Users, Groups, Versions, Dirs
 #*****************************************************************************
-USERS=('dev', 'pj')
+USERS=('dev' 'pj')
 GROUPS=('sudo' 'www-data' 'docker', 'dev')
 
 # Set Env Vars
