@@ -94,7 +94,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
 apt-cache policy docker-ce
-sudo apt install docker-ce
+sudo apt install docker-ce -y
 
 # Install Docker-Compose
 mkdir -p ~/.docker/cli-plugins/
@@ -120,7 +120,7 @@ sudo ufw status
 # Add Users, assign Groups, enable access
 #*****************************************************************************
 for USER in "${USERS[@]}"; do
-	sudo useradd -m $USER
+	sudo adduser $USER
 
 	# Add users to groups
 	for GROUP in "${GROUPS[@]}"; do
