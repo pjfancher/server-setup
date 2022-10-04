@@ -32,6 +32,7 @@ TOOLS=(
 	'build-essential'
 	'certbot'
 	'python3-certbot-dns-cloudflare'
+	'jq'
 	'sqlite3'
 
 	# Helpful Tools but not critical
