@@ -4,6 +4,9 @@
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
 
+# Get sudo upfront
+sudo -v
+
 # Users, Groups, Versions, Dirs
 #*****************************************************************************
 USERS=('dev' 'pj')
@@ -16,6 +19,12 @@ export NODE_VERSION=14.20.0
 export NODE_PATH=$NVM_DIR/v$NODE_VERSION/lib/node_modules
 export PATH=$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+# Setup swapfile
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 #*****************************************************************************
 #*****************************************************************************
