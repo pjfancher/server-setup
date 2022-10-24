@@ -61,7 +61,6 @@ TOOLS=(
 
 # Tools that may be pre-installed that we'd like to remove
 REMOVE_TOOLS=(
-	'snapd'
 	'apache'
 	'mysql'
 )
