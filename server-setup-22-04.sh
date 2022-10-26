@@ -43,6 +43,7 @@ TOOLS=(
 	'python3-certbot-dns-cloudflare'
 	'jq'
 	'sqlite3'
+	'awscli'
 
 	# Helpful Tools but not critical
 	'dtrx'
